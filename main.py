@@ -1,8 +1,12 @@
 import csv
+import sys
 
 
 def main():
-    file_path = 'gemma-context4-google'
+    if (len(sys.argv) != 2):
+        print(f"Usage: python {__file__.split('/')[-1]} <logFile>")
+        return 1
+    file_path = sys.argv[1]
 
     reports = []
     with open(file_path, 'r') as file:
@@ -30,6 +34,8 @@ def main():
         for row in reader:
             print(row[3])
 
+    return 0
+
 
 def parseRuntimeStats(runtimestats):
     stats = runtimestats.split("|")
@@ -56,4 +62,4 @@ def parseResponeReport(responeReport):
 
 
 if __name__ == '__main__':
-    main()
+    exit(main())
