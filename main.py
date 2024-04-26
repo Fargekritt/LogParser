@@ -1,9 +1,6 @@
 import csv
 import os
 import sys
-from os import listdir
-
-
 
 
 def main():
@@ -26,7 +23,7 @@ def main():
                 else:
                     reports.append((splitted[0], splitted[1]))
 
-        with open(f'output/{log}.csv', 'w') as csvfile:
+        with open(f'output/{log.split(".")[0]}.csv', 'w') as csvfile:
             writer = csv.writer(csvfile)
 
             for report in reports:
